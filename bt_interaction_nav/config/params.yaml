@@ -1,0 +1,33 @@
+bt_runner_node:
+  ros__parameters:
+    # ── tree tick rate ──────────────────────────────────────────────
+    tick_rate_hz: 10.0
+
+    # ── person detection ───────────────────────────────────────────
+    # Detections with confidence < min_confidence are ignored
+    min_confidence: 0.7
+
+    # ── approach behaviour ─────────────────────────────────────────
+    # Stop approaching when person distance <= target_distance (metres)
+    target_distance: 0.50
+
+    # P-controller gains for /cmd_vel approach
+    max_linear_speed: 0.20   # m/s
+    max_angular_speed: 0.80  # rad/s
+    linear_kp: 0.60
+    angular_kp: 1.20
+
+    # ── wait behaviour ─────────────────────────────────────────────
+    wait_seconds: 10.0
+
+    # ── topic / action names ────────────────────────────────────────
+    person_topic: "/person"
+    cmd_vel_topic: "/cmd_vel"
+    nav_action_name: "/navigate_to_pose"
+
+    # ── goal B (navigation target) ──────────────────────────────────
+    goal_b:
+      frame_id: "map"
+      x: 0.0
+      y: 0.0
+      yaw: 0.0   # radians
